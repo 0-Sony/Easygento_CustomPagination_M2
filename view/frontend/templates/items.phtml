@@ -1,0 +1,27 @@
+<?php
+/**
+ * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author Phuong LE <phuong.le@menincode.com>
+ * @copyright Copyright (c) 2022 Men In Code Ltd
+ */
+use \Easygento\CustomPagination\Block\Items;
+
+?>
+<?php /** @var Items $block */
+/** @var mixed[] $items */
+$items = $block->getItems();
+?>
+<?php if (!empty($items)) : ?>
+    <?php foreach($items as $item) :  ?>
+        <!-- Build your own template per item -->
+    <?php endforeach ?>
+    <?php if ($block->getPreviousUrl()) : ?>
+        <a href="<?= $block->getPreviousUrl() ?>" class="item-page"><?= __('Previous Items') ?></a>
+    <?php endif ?>
+    <?php if ($block->getNextUrl()) : ?>
+        <a href="<?= $block->getNextUrl() ?>" class="item-page"><?= __('Next Items') ?></a>
+    <?php endif ?>
+<?php else: ?>
+    <p><?= $block->getEmptyItemMessage() ?></p>
+<?php endif; ?>
+
